@@ -32,6 +32,7 @@ export default function SignIn() {
         bg="gray.800"
         p="8"
         borderRadius={8}
+        
         flexDir="column"
         onSubmit={handleSubmit(handleSignIn)}
       >
