@@ -34,7 +34,7 @@ export default function SignIn() {
         borderRadius={8}
         
         flexDir="column"
-        onSubmit={handleSubmit(handleSignIn())}
+        onSubmit={handleSubmit(handleSignIn)}
       >
         <Stack spacing="4">
           <Input 
