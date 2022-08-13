@@ -38,17 +38,15 @@ export default function SignIn() {
       >
         <Stack spacing="4">
           <Input 
-            name="email"
             type="email"
             label="E-mail"
-            ref={register}
+            {...register('email')}
           />
 
           <Input 
-            name="password"
             type="password"
             label="Senha"
-            ref={register}
+            {...register('password')}
           />
         </Stack>
 
