@@ -62,7 +62,6 @@ export default function SignIn() {
             error={errors.password}
             {...register('password')}
           />
-          
         </Stack>
 
         <Button 
