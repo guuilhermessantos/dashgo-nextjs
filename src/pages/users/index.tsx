@@ -24,6 +24,7 @@ export default function UserList() {
           month: 'long',
           year: 'numeric'
         })
+        
       }
     })
 
