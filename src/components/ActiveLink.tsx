@@ -1,36 +1,24 @@
-import Link, { LinkProps } from "next/link";
+import Link, { LinkProps } from "next/link"
 import { useRouter } from "next/router";
-import { cloneElement, ReactElement } from "react";
+import { cloneElement, ReactElement } from "react"
 
-interface ActiveLinkProps extends LinkProps{
-  children: ReactElement;
-  shouldMatchExactHref?: boolean;
+
+interface ActiveLinkProps extends LinkProps {
+    children: ReactElement;
+    matchExactHref?: boolean;
 }
 
-export function ActiveLink({
-  children, 
-  shouldMatchExactHref = false, 
-  ...rest
-}: ActiveLinkProps) {
-  const { asPath } = useRouter()
+export const ActiveLink = ({ matchExactHref = false, children, ...rest }: ActiveLinkProps) => {
+    const router = useRouter();
+    const isActive = matchExactHref ? router.asPath === rest.href : (
+        router.asPath.startsWith(String(rest.href))
+    );
 
-  let isActive = false;
-
-  if (shouldMatchExactHref && (asPath === rest.href || asPath === rest.as)) {
-    isActive = true;
-  }
-
-  if (!shouldMatchExactHref && 
-    (asPath.startsWith(String(rest.href)) ||
-    asPath.startsWith(String(rest.as)))) {
-      isActive = true;
-  }
-
-  return (
-    <Link {...rest}>
-      {cloneElement(children, {
-        color: isActive ? 'pink.400' : 'gray.50'
-      })}
-    </Link>
-  )
+    return (
+        <Link {...rest}>
+            {cloneElement(children, {
+                color: isActive ? 'pink.400' : 'gray.50',
+            })}
+        </Link>
+    )
 }
